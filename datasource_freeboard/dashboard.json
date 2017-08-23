@@ -1,0 +1,284 @@
+{
+ "version": "application/octet-stream",
+ "allow_edit": true,
+ "plugins": [],
+ "panes": [
+  {
+   "title": "Humidity",
+   "width": 1,
+   "row": {
+    "3": 11
+   },
+   "col": {
+    "3": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "value": "JSON.parse(datasources[\"dssonoffsc\"][\"/YOUR_APPID/data/sonoffsc\"]).humidity",
+      "units": "%",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "title": "Light",
+   "width": 1,
+   "row": {
+    "3": 11
+   },
+   "col": {
+    "3": 3
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "value": "JSON.parse(datasources[\"dssonoffsc\"][\"/YOUR_APPID/data/sonoffsc\"]).light",
+      "units": "%",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 11
+   },
+   "col": {
+    "3": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "Slider",
+     "settings": {
+      "caption": "RED",
+      "color": "red",
+      "showvalue": 1,
+      "min": 0,
+      "max": "255",
+      "step": 1,
+      "initialvalue": "0",
+      "autovaluesource": "datasources[\"dssonoffsc\"][\"/YOUR_APPID/status/rgb\"].split(\",\")[0]",
+      "onSlide": "",
+      "onStop": "microgear[\"dssonoffsc\"].publish(\"/set/r\",value);",
+      "onCreatedAction": "microgear[\"dssonoffsc\"].publish(\"/get/rgb\",\"?\");"
+     }
+    },
+    {
+     "type": "Slider",
+     "settings": {
+      "caption": "Green",
+      "color": "green",
+      "showvalue": 1,
+      "min": 0,
+      "max": "255",
+      "step": 1,
+      "initialvalue": "0",
+      "autovaluesource": "datasources[\"dssonoffsc\"][\"/YOUR_APPID/status/rgb\"].split(\",\")[1]",
+      "onSlide": "",
+      "onStop": "microgear[\"dssonoffsc\"].publish(\"/set/g\",value);"
+     }
+    },
+    {
+     "type": "Slider",
+     "settings": {
+      "caption": "Blue",
+      "color": "blue",
+      "showvalue": 1,
+      "min": 0,
+      "max": "255",
+      "step": 1,
+      "initialvalue": "0",
+      "autovaluesource": "datasources[\"dssonoffsc\"][\"/YOUR_APPID/status/rgb\"].split(\",\")[2]",
+      "onSlide": "",
+      "onStop": "microgear[\"dssonoffsc\"].publish(\"/set/b\",value);"
+     }
+    }
+   ]
+  },
+  {
+   "title": "Temperature",
+   "width": 1,
+   "row": {
+    "3": 19
+   },
+   "col": {
+    "3": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "value": "JSON.parse(datasources[\"dssonoffsc\"][\"/YOUR_APPID/data/sonoffsc\"]).temperature",
+      "units": "C",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "title": "Noise",
+   "width": 1,
+   "row": {
+    "3": 19
+   },
+   "col": {
+    "3": 2
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "value": "JSON.parse(datasources[\"dssonoffsc\"][\"/YOUR_APPID/data/sonoffsc\"]).noise",
+      "units": "%",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "title": "Clap",
+   "width": 1,
+   "row": {
+    "3": 19
+   },
+   "col": {
+    "3": 3
+   },
+   "col_width": 1,
+   "widgets": []
+  },
+  {
+   "title": "Dust",
+   "width": 1,
+   "row": {
+    "3": 27
+   },
+   "col": {
+    "3": 1
+   },
+   "col_width": 1,
+   "widgets": [
+    {
+     "type": "gauge",
+     "settings": {
+      "value": "JSON.parse(datasources[\"dssonoffsc\"][\"/YOUR_APPID/data/sonoffsc\"]).dust",
+      "units": "%",
+      "min_value": 0,
+      "max_value": 100
+     }
+    }
+   ]
+  },
+  {
+   "title": "Device online",
+   "width": 1,
+   "row": {
+    "3": 35
+   },
+   "col": {
+    "3": 1
+   },
+   "col_width": "3",
+   "widgets": [
+    {
+     "type": "html",
+     "settings": {
+      "html": "var al = Object.keys(datasources[\"dssonoffsc\"][\"alias\"]);\n\nvar html=\"\";\nfor(var i=0; i<al.length; i++){\n    html+=\"<span style='font-size:24px;'>\"+(i+1)+\": \"+al[i]+\"</span><br>\";\n}\nreturn html;",
+      "height": 4
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 45,
+    "5": 27
+   },
+   "col": {
+    "3": 1,
+    "5": 1
+   },
+   "col_width": "3",
+   "widgets": [
+    {
+     "type": "text_widget",
+     "settings": {
+      "size": "regular",
+      "value": "datasources[\"dssonoffsc\"][\"/YOUR_APPID/data/sonoffsc\"]",
+      "animate": true
+     }
+    }
+   ]
+  },
+  {
+   "width": 1,
+   "row": {
+    "3": 1
+   },
+   "col": {
+    "3": 1
+   },
+   "col_width": "3",
+   "widgets": [
+    {
+     "type": "FeedView",
+     "settings": {
+      "datasource": "datasources[\"feedsonoffsc\"][\"data\"]",
+      "filter": "",
+      "type": "line",
+      "color": "",
+      "marker": true,
+      "multipleaxis": true,
+      "autogap": false,
+      "height_block": "240",
+      "height": "4"
+     }
+    }
+   ]
+  }
+ ],
+ "datasources": [
+  {
+   "name": "dssonoffsc",
+   "type": "netpie_microgear",
+   "settings": {
+    "name": "dssonoffsc",
+    "appid": "YOUR_APPID",
+    "key": "YOUR_KEY",
+    "secret": "YOUR_SECRET",
+    "topics": "/#"
+   }
+  },
+  {
+   "name": "feedsonoffsc",
+   "type": "netpie_feed",
+   "settings": {
+    "name": "feedsonoffsc",
+    "feedid": "FEED_ID",
+    "apikey": "FEED_API_KEY",
+    "granularity_value": "15",
+    "granularity_unit": "seconds",
+    "since_value": "1",
+    "since_unit": "hours",
+    "interval": "15"
+   }
+  }
+ ],
+ "columns": 3,
+ "theme": "default"
+}
