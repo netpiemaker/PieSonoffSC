@@ -2,7 +2,7 @@
 
 Example IoT device with NETPIE (https://netpie.io)
 
-NETPIE - Blog ()
+NETPIE - Blog (https://blog.netpie.io/archives/2437)
 
 Project reference http://tinkerman.cat/sonoff-sc-with-mqtt-and-domoticz-support
 
